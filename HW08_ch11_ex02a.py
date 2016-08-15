@@ -29,15 +29,15 @@ pledge_histogram = {}
 def histogram_old(s):
     d = dict()
     for c in s:
-        if c not in d:
-            d[c] = 1
-        else:
-            d[c] += 1
+        d[c] = d.get(c, 0) + 1
     return d
 
 
 def histogram_new(s):
-    ...
+    d = dict()
+    for word in s:
+        d[word] = d.get(word, 0) + 1
+    return d
 
 
 def get_pledge_list():
@@ -45,9 +45,16 @@ def get_pledge_list():
     the order it appears in the original file. returns the list.
     """
     # Your code here.
-    pass
-    # return pledge_list (uncomment this)
-
+    with open("pledge.txt", "r") as pledge:
+        pledge_list = []
+        pledge_list = [word for word in pledge.read().split()]
+        #Alternative method of nested list comprehension
+        #pledge_list = [word for line in pledge.readlines() for word in line.split()]
+        #below are the for loops for the nested list comprehension
+        #for line in pledge.readlines():
+        #    for word in line.split():
+        #        pledge_list.append(word)"""
+    return pledge_list
 
 ###############################################################################
 def main():  # DO NOT CHANGE BELOW
