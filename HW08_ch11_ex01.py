@@ -10,8 +10,12 @@
 
 # Body
 def store_to_dict():
-    pass
-
+    with open("words.txt", "r") as fin:
+	    words = fin.read().splitlines()
+	    word_dict = {}
+	    for idx, word in enumerate(words):
+		    word_dict[word] = idx
+    return word_dict
 
 ###############################################################################
 def main():  # DO NOT CHANGE BELOW
